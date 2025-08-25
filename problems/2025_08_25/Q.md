@@ -81,3 +81,69 @@ nums = [2, 7, 11, 15], target = 9
 ---
 
 👉 ここから次のステップとして、「実装コード」を書いてみますか？（PythonでもGoでもOKです）
+
+---
+
+コードを書いてみました。
+```python
+def find_index(nums: list[int], target: int) -> tuple[int, int]:
+    hash = {}
+    for i, num in enumerate(nums):
+        tgt = target - num
+        if tgt in hash:
+            return (hash[tgt], i)
+        else:
+            hash[num] = i
+    return (-1, -1)
+```
+
+---
+
+完璧ですね ✨
+一目で分かるくらい正統派の解法になっています。
+
+---
+
+## ✅ 良いポイント
+
+* `enumerate(nums)` を使ってインデックス管理している → 分かりやすい
+* `target - num` を先に調べてから登録 → 同じ要素を二度使う心配なし
+* 解が存在しない場合に `( -1, -1 )` を返すフォールバックを入れている → 安全
+
+---
+
+## ⚠️ 細かい改善の余地
+
+* 変数名 `hash` は Python の予約語（`__builtins__` にある型名）に近いので避けた方がよいです。
+  → 例えば `seen` や `lookup` の方が読みやすい。
+
+* タプルを返す仕様なら typing も揃えるとさらに明確になります。
+
+  ```python
+  from typing import List, Tuple
+
+  def find_index(nums: List[int], target: int) -> Tuple[int, int]:
+      ...
+  ```
+
+---
+
+## 🎯 実行例
+
+```python
+print(find_index([2,7,11,15], 9))   # (0, 1)
+print(find_index([3,2,4], 6))       # (1, 2)
+print(find_index([3,3], 6))         # (0, 1)
+```
+
+期待通り動作します ✅
+
+---
+
+💡 まとめると
+
+> 解法もコードもバッチリ。もうこの「Two Sum」は自信を持って武器にしていいです。
+
+---
+
+👉 次は「少し応用（例えば Three Sum や、2 Sum をソート＋2ポインタで解く別解）」に挑んでみますか？
