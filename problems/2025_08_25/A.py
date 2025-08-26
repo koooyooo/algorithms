@@ -1,5 +1,3 @@
-
-
 def find_index(nums: list[int], target: int) -> tuple[int, int]:
     hash = {}
     for i, num in enumerate(nums):
