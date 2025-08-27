@@ -1,9 +1,9 @@
-# Python実装
 def second_largest_python(nums: list[int]) -> int:
+    """Python実装板"""
     return max([v for v in nums if v != max(nums)])
 
-# 個人実装
 def second_largest_mine(nums: list[int]) -> int:
+    """個人実装板"""
     v_1st, v_2nd = 0, 0
     for num in nums:
         prev_1st = v_1st
@@ -14,8 +14,8 @@ def second_largest_mine(nums: list[int]) -> int:
             v_2nd = num
     return v_2nd
 
-# 模範解答
 def second_largest_ans(nums: list[int]) -> int:
+    """模範解答"""
     v_1st, v_2nd = float('-inf'), float('-inf')
     for num in nums:
         if num > v_1st:
