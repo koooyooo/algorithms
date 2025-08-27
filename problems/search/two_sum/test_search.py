@@ -1,4 +1,4 @@
-from A import find_index
+from search import find_index
 
 def test_find_index():
     """
